@@ -2,14 +2,14 @@
 
 ## 1. Instalasi
 
-Untuk memulai, pastikan Anda telah menginstal semua pustaka yang diperlukan dengan menjalankan perintah berikut di terminal Anda:
+Install Library
 
 ```bash
 pip install -r requirements.txt
+```
 
 
-
-2. Optimalisasi
+## 2. Optimalisasi
 Supaya GUI sesuai, ubah resolusi layar menjadi 1366x768 atau yang mendekati
 -Cara ubah resolusi layar: Dekstop -> Klik Kanan -> Display settings -> Scroll Kebawah -> Display resolution
 Dan untuk hasil deteksi yang maksimal usahakan jarak tangan dengan kamera kurang lebih 2 jengkal
