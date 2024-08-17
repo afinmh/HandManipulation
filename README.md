@@ -2,6 +2,8 @@
 
 ## 1. Instalasi
 
+![gesture](https://github.com/user-attachments/assets/fcf639ea-868e-4a2e-a5d5-d680c4240ed0)
+
 Install Library
 
 ```bash
