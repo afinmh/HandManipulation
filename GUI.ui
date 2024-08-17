@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1357</width>
+    <height>811</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>-10</y>
+      <width>1366</width>
+      <height>743</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame{
+	background-color: rgb(255, 255, 255);
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="vid">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>150</y>
+       <width>721</width>
+       <height>421</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1, /* Gradasi vertikal */
+        stop:0 rgba(0, 0, 0, 245),         /* Hitam di atas */
+        stop:0.3 rgb(32, 33, 36),          /* Peralihan dari hitam ke warna tengah */
+        stop:0.7 rgb(32, 33, 36),          /* Warna tengah berlangsung lebih lama */
+        stop:1 rgba(0, 0, 0, 245)          /* Hitam di bawah */
+    );
+    border: 2px solid rgb(32, 33, 36);
+    color: white;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="sentence">
+     <property name="geometry">
+      <rect>
+       <x>820</x>
+       <y>210</y>
+       <width>501</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    border-radius: 5px;            /* Border radius 5px */
+	border:1px solid;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::PlainText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="kata">
+     <property name="geometry">
+      <rect>
+       <x>820</x>
+       <y>180</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Sentence:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="character">
+     <property name="geometry">
+      <rect>
+       <x>820</x>
+       <y>150</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Character:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="chara">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>150</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="dele">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>150</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icon/delete-left-solid.svg</normaloff>icon/delete-left-solid.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>45</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clear">
+     <property name="geometry">
+      <rect>
+       <x>1160</x>
+       <y>150</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icon/eraser-solid.svg</normaloff>icon/eraser-solid.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="speakk">
+     <property name="geometry">
+      <rect>
+       <x>1250</x>
+       <y>150</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icon/head-side-cough-solid.svg</normaloff>icon/head-side-cough-solid.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="camera">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>580</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+border-radius:5px;
+}</string>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <item>
+      <property name="text">
+       <string>Camera Default</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icon/video-solid.svg</normaloff>icon/video-solid.svg</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>WebCam</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icon/webcam.png</normaloff>icon/webcam.png</iconset>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="bahasa">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>580</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+border-radius:5px;
+}</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Indonesia</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icon/flag.png</normaloff>icon/flag.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Inggris</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icon/united-kingdom.png</normaloff>icon/united-kingdom.png</iconset>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="logo">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>261</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>C:/Users/mafin/Downloads/cb57dd40-acdd-48e5-a793-b2698cc3d0ed-removebg-preview.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="check_cam">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>500</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    QCheckBox {
+        background-color: rgb(255, 255, 255);  /* Warna latar belakang default */
+        border: 1px solid white;
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+        padding: 10px;  /* Tambahkan padding untuk menambah jarak */
+    }
+    QCheckBox::indicator {
+        width: 0px; 
+        height: 0px;
+    }
+
+QCheckBox:checked {
+	background-color: rgb(234, 67, 53);
+        color: white;
+        border: 1px solid rgb(234, 67, 53);
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+    }
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icon/video-solid.svg</normaloff>icon/video-solid.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="check_hand">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>500</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    QCheckBox {
+        background-color: rgb(255, 255, 255);  /* Warna latar belakang default */
+        border: 1px solid white;
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+        padding: 10px;  /* Tambahkan padding untuk menambah jarak */
+    }
+    QCheckBox::indicator {
+        width: 0px; 
+        height: 0px;
+    }
+
+QCheckBox:checked {
+	background-color: rgb(234, 67, 53);
+        color: white;
+        border: 1px solid rgb(234, 67, 53);
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+    }
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icon/hand-point-up-solid.svg</normaloff>icon/hand-point-up-solid.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="autoRepeat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="check_speak">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>500</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    QCheckBox {
+        background-color: rgb(255, 255, 255);  /* Warna latar belakang default */
+        border: 1px solid white;
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+        padding: 6px;  /* Tambahkan padding untuk menambah jarak */
+    }
+    QCheckBox::indicator {
+        width: 0px; 
+        height: 0px;
+    }
+
+QCheckBox:checked {
+	background-color: rgb(234, 67, 53);
+        color: white;
+        border: 1px solid rgb(234, 67, 53);
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+    }
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icon/volume-high-solid.svg</normaloff>icon/volume-high-solid.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="check_bright">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>500</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    QCheckBox {
+        background-color: rgb(255, 255, 255);  /* Warna latar belakang default */
+        border: 1px solid white;
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+        padding: 6px;  /* Tambahkan padding untuk menambah jarak */
+    }
+    QCheckBox::indicator {
+        width: 0px; 
+        height: 0px;
+    }
+
+QCheckBox:checked {
+	background-color: rgb(234, 67, 53);
+        color: white;
+        border: 1px solid rgb(234, 67, 53);
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+    }
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icon/sun-solid.svg</normaloff>icon/sun-solid.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="check_draw">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>500</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    QCheckBox {
+        background-color: rgb(255, 255, 255);  /* Warna latar belakang default */
+        border: 1px solid white;
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+        padding: 6px;  /* Tambahkan padding untuk menambah jarak */
+    }
+    QCheckBox::indicator {
+        width: 0px; 
+        height: 0px;
+    }
+
+QCheckBox:checked {
+	background-color: rgb(234, 67, 53);
+        color: white;
+        border: 1px solid rgb(234, 67, 53);
+        border-radius: 25px; /* Setengah dari lebar/tinggi untuk membuat lingkaran */
+    }
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icon/palette-solid.svg</normaloff>icon/palette-solid.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="idle">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>320</y>
+       <width>291</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    background-color: transparent; /* Membuat background transparan */
+    color: white; /* Warna teks putih, bisa diganti sesuai kebutuhan */
+    text-align: center; /* Memposisikan teks di tengah secara horizontal */
+    qproperty-alignment: 'AlignCenter'; /* Memposisikan teks di tengah secara vertikal dan horizontal */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Kamera nonaktif</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="warnaai">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>580</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+border-radius:5px;
+}</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Merah</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hijau</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Biru</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Kuning</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ungu</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="picture">
+     <property name="geometry">
+      <rect>
+       <x>820</x>
+       <y>270</y>
+       <width>501</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    border-radius: 5px;            /* Border radius 5px */
+	border:1px solid;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1357</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="../porto/dlogo.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,10 @@
+PyQt5
+opencv-python
+numpy
+mediapipe
+joblib
+comtypes
+pycaw
+screen-brightness-control
+gTTS
+pygame
