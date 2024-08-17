@@ -372,7 +372,7 @@ border-radius:5px;
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>C:/Users/mafin/Downloads/cb57dd40-acdd-48e5-a793-b2698cc3d0ed-removebg-preview.png</pixmap>
+      <pixmap>icon/picture/cb57dd40-acdd-48e5-a793-b2698cc3d0ed-removebg-preview.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
