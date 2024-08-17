@@ -1,4 +1,10 @@
-1. Install library
+# Panduan Penggunaan Aplikasi Deteksi Gesture Tangan
+
+## 1. Instalasi
+
+Untuk memulai, pastikan Anda telah menginstal semua pustaka yang diperlukan dengan menjalankan perintah berikut di terminal Anda:
+
+```bash
 pip install -r requirements.txt
 
 
