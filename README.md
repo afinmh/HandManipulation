@@ -11,7 +11,8 @@ pip install -r requirements.txt
 
 ## 2. Optimalisasi
 Supaya GUI sesuai, ubah resolusi layar menjadi 1366x768 atau yang mendekati
-- Cara ubah resolusi layar: Dekstop -> Klik Kanan -> Display settings -> Scroll Kebawah -> Display resolution
+- Cara ubah resolusi layar:
+  - Dekstop -> Klik Kanan -> Display settings -> Scroll Kebawah -> Display resolution
 Dan untuk hasil deteksi yang maksimal usahakan jarak tangan dengan kamera kurang lebih 2 jengkal
 
 *catatan
