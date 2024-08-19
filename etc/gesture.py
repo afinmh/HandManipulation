@@ -1,62 +1,97 @@
 import cv2
-import threading
+import os
+import mediapipe as mp
+import joblib
+import numpy as np
 
-def show_camera(cap):
-    while cap.isOpened():
-        ret, frame = cap.read()
-        if ret:
-            cv2.imshow('Camera Feed', frame)
-            if cv2.waitKey(1) & 0xFF == 27:  # Tekan 'Esc' untuk menutup jendela secara manual
-                break
-        else:
-            print("Tidak bisa mengambil frame dari kamera.")
-    cap.release()
-    cv2.destroyAllWindows()
+# Inisialisasi MediaPipe Hands
+mp_hands = mp.solutions.hands
+hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.7)
+mp_drawing = mp.solutions.drawing_utils
 
-def main():
-    cap = cv2.VideoCapture(0)  # Langsung membuka kamera saat program dimulai
-    camera_open = cap.isOpened()
+# Pengaturan folder penyimpanan
+save_dir = 'uji'
+image_counter = 0
 
-    if camera_open:
-        print("Kamera dibuka. Ketik 'close' untuk menutup kamera atau 'exit' untuk keluar.")
-        threading.Thread(target=show_camera, args=(cap,)).start()
-    else:
-        print("Gagal membuka kamera.")
-        return
+if not os.path.exists(save_dir):
+    os.makedirs(save_dir)
 
-    while True:
-        command = input("Ketik 'close' untuk menutup kamera, 'open' untuk membuka kamera kembali, atau 'exit' untuk keluar: ").strip().lower()
-        
-        if command == 'close':
-            if camera_open:
-                cap.release()
-                cv2.destroyAllWindows()
-                camera_open = False
-                print("Kamera ditutup.")
-            else:
-                print("Kamera sudah ditutup.")
-        
-        elif command == 'open':
-            if not camera_open:
-                cap = cv2.VideoCapture(0)
-                if cap.isOpened():
-                    camera_open = True
-                    print("Kamera dibuka kembali.")
-                    threading.Thread(target=show_camera, args=(cap,)).start()
-                else:
-                    print("Gagal membuka kamera.")
-            else:
-                print("Kamera sudah dibuka.")
-        
-        elif command == 'exit':
-            if camera_open:
-                cap.release()
-            cv2.destroyAllWindows()
-            print("Program selesai.")
-            break
-        
-        else:
-            print("Perintah tidak dikenali. Ketik 'open', 'close', atau 'exit'.")
+# Muat model dari file
+model_filename = 'model/model_complete1.pkl'
+knn = joblib.load(model_filename)
+gesture_label = {
+    0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I', 9: 'J', 10: 'K', 
+    11: 'L', 12: 'M', 13: 'N', 14: 'O', 15: 'P', 16: 'Q', 17: 'R', 18: 'S', 19: 'T', 20: 'U', 
+    21: 'V', 22: 'W', 23: 'X', 24: 'Y', 25: 'Z', 26: ' ', 27: 'next'
+}
 
-if __name__ == "__main__":
-    main()
+# Fungsi prediksi gesture dari landmark tangan
+def predict_gesture(landmarks):
+    features = np.array(landmarks).flatten().reshape(1, -1)
+    return knn.predict(features)[0]
+
+# Inisialisasi kamera
+cap = cv2.VideoCapture(1)
+
+while True:
+    ret, frame = cap.read()
+    frame = cv2.flip(frame, 1)
+    if not ret:
+        break
+    
+    # Ubah frame menjadi RGB
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    
+    # Deteksi tangan
+    result = hands.process(frame_rgb)
+    
+    if result.multi_hand_landmarks:
+        for hand_landmarks in result.multi_hand_landmarks:
+            # Buat salinan dari frame asli sebelum menggambar landmark dan kotak
+            frame_copy = frame.copy()
+
+            # Hitung koordinat kotak di sekitar tangan
+            h, w, c = frame.shape
+            x_min = int(min([landmark.x for landmark in hand_landmarks.landmark]) * w) - 50
+            y_min = int(min([landmark.y for landmark in hand_landmarks.landmark]) * h) - 50
+            x_max = int(max([landmark.x for landmark in hand_landmarks.landmark]) * w) + 50
+            y_max = int(max([landmark.y for landmark in hand_landmarks.landmark]) * h) + 50
+
+            # Pastikan koordinat berada dalam batas gambar
+            x_min = max(0, x_min)
+            y_min = max(0, y_min)
+            x_max = min(w, x_max)
+            y_max = min(h, y_max)
+
+            # Gambarkan kotak di sekitar tangan
+            cv2.rectangle(frame, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
+
+            # Ekstrak landmark untuk prediksi gesture
+            normalized_landmarks = [(landmark.x, landmark.y, landmark.z) for landmark in hand_landmarks.landmark]
+            gesture = predict_gesture(normalized_landmarks)
+            gesture_name = gesture_label.get(gesture, "Unknown")
+
+            # Tampilkan gesture yang terdeteksi
+            cv2.putText(frame, f'Gesture: {gesture_name}', (x_min, y_min - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+
+            # Simpan gambar dalam kotak jika tombol 's' ditekan
+            if cv2.waitKey(1) & 0xFF == ord('s'):
+                # Potong gambar dalam kotak dari salinan frame asli
+                cropped_image = frame_copy[y_min:y_max, x_min:x_max]
+
+                # Simpan gambar tanpa resize
+                image_path = os.path.join(save_dir, f'{gesture_name}_{image_counter}.png')
+                cv2.imwrite(image_path, cropped_image)
+                image_counter += 1
+                print(f'Gambar disimpan: {image_path}')
+    
+    # Tampilkan frame
+    cv2.imshow('Gesture Detection', frame)
+    
+    # Keluar dengan menekan ESC
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+
+# Lepaskan resources
+cap.release()
+cv2.destroyAllWindows()
